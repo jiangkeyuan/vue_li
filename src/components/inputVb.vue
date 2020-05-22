@@ -24,7 +24,7 @@ export default {};
   border: none;
   outline: 0;
   font-size: 27px;
-  color: #848484;
+  color: #484848;
 }
 .hkd {
   font-family: SFUIDisplay;
