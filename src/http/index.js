@@ -15,14 +15,11 @@ service.interceptors.request.use(
     (config) => {
         // console.log( vue.$store.requestLoading)
         //判断请求方式是否为POST，进行转换格式
-        config.method === 'post'
-            ? config.data = qs.stringify({...config.data})
-            : config.params = {...config.params};
+            config.params = {...config.params};
         // 请求发送前进行处理
         return config
     },
     (error) => {
-        store.commit('CLOSE_LOADING');
         // 请求错误处理
         return Promise.reject(error)
     }
@@ -51,6 +48,7 @@ service.interceptors.response.use(
                 msg: errMsg
             }
         }
+        return info;
     }
 )
 export default service

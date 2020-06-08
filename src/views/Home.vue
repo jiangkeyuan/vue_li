@@ -36,7 +36,6 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
-    console.log(router);
     let msg = computed(()=>store.state.home.messages.msg)
     let data = reactive({
       name: "",
