@@ -13,9 +13,14 @@ import Header from "@/components/header.vue";
 import SwiperCont from "@/components/swiper";
 import Nearby from "@/components/nearby";
 import MapContent from "@/components/map";
+import { useRouter,useRoute } from 'vue-router'
 export default {
   name: "Home",
   setup() {
+    const router = useRouter();
+    const route = useRoute();
+    console.log(router);
+    console.log(route);
     return {
 
     };

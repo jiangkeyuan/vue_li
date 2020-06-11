@@ -11,13 +11,10 @@
     </ul>
 </template>
 <script>
-import { computed } from "vue";
-import { useStore } from "vuex";
+import useCity from "@/hooks/useCity";
 export default {
     setup(){
-        const store = useStore();
-        store.dispatch("city/setCity");
-        let city = computed(()=>store.state.city.city);
+        const city = useCity();
         return {
             city
         }
