@@ -18,6 +18,8 @@
     </div>
     {{msg}}
     <Button class="home-button" value="done" :click="handleClick"></Button>
+
+    <Button class="home-button" value="go to todo" :click="location"></Button>
   </div>
 </template>
 
@@ -62,11 +64,21 @@ export default {
       }) // -> /user/123
     }
 
+    const location = () => {
+      router.push({
+        path: 'todoList',
+        params: {
+          userId: 123
+        }
+      })
+    }
+
     return {
       data,
       onMounted,
       msg,
-      handleClick
+      handleClick,
+      location
     };
   },
   components: {

@@ -26,6 +26,13 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/Result.vue')
     }
+  },
+  {
+    path: '/TodoList',
+    name: 'todoList',
+    component: function () {
+      return import('../views/todoList.vue')
+    }
   }
 ]
 
