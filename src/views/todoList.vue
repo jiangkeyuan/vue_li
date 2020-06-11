@@ -6,7 +6,7 @@
     </div>
     <ul>
       <li v-for="(item, key) in pageData.list" :key='key'>
-        <TodoItem :item-data='item' :deleteItem='deleteItem' :goTodo='goTodo' />
+        <TodoItem :item-data='item' @handouleClick='deleteItem' @goTodo='goTodo(id)'/>
       </li>
     </ul>
   </div>
@@ -42,21 +42,21 @@
           },
         ]
       })
-
-      const deleteItem = () => {
-        console.log('delete')
-        console.log(arguments)
-        pageData.list.slice()
+      const test = (id)=>{
+        console.log(id,"test::::::::::::::")
+      }
+      const deleteItem = (value) => {
+        pageData.list = pageData.list.filter((v)=>v.id !== value);
       }
 
-      const goTodo = () => {
-        console.log('go to')
-        console.log(arguments)
-      }
+      const goTodo = (id) => {
+        console.log(id)
+      } 
 
       provide('msg', deleteItem)
 
       return {
+        test,
         pageData,
         deleteItem,
         goTodo

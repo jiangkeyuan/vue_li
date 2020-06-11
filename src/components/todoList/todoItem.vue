@@ -3,7 +3,7 @@
     <p>{{itemData.value}}</p>
 
     <div class="flex-box">
-      <baseBtn theme='red' :click='deleteItem'><p>delete</p></baseBtn>
+      <baseBtn theme='red' @handouleClick='deleteItem'><p>delete</p></baseBtn>
       <baseBtn theme='green' style="margin-left: 10px" :click='goTodo'><p>go</p></baseBtn>
     </div>
 
@@ -20,14 +20,19 @@
         type: Object,
         default: () => {}
       },
-      deleteItem: Function,
       goTodo: Function,
     },
     components: {
       baseBtn
     },
-    setup() {
-
+    setup(props,ctx) {
+      console.log(props,ctx)
+      const deleteItem = ()=>{
+        ctx.emit("handouleClick",props.itemData.id)
+      }
+      return {
+        deleteItem
+      }
     },
   }
 </script>

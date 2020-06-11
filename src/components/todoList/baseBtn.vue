@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <button 
+  <div @click='handouleClick'>
+    <button
       :class="{
         square: true, 
         theme1: theme === 'red' ? true : false, 
         theme2: theme === 'green' ? true : false}" 
-      @click='click'
     >
       <slot></slot>
     </button>
@@ -23,12 +22,17 @@
       theme: {
         type: String,
         default: 'green'
-      },
-      click: Function
+      }
     },
     inject: ['msg'],
-    setup() { 
-      
+    setup(props,ctx) { 
+      console.log(props)
+      const handouleClick = ()=>{
+        ctx.emit("handouleClick","子传父")
+      }
+      return {
+        handouleClick
+      }
     }
   }
 </script>
