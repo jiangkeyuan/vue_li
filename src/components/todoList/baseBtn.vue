@@ -26,9 +26,8 @@
     },
     inject: ['msg'],
     setup(props,ctx) { 
-      console.log(props)
       const handouleClick = ()=>{
-        ctx.emit("handouleClick","子传父")
+        ctx.emit("handouleclick","子传父")
       }
       return {
         handouleClick
