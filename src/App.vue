@@ -3,6 +3,7 @@
 </template>
 
 <style>
+
  html, body, div, span, applet, object, iframe,
  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
  a, abbr, acronym, address, big, cite, code,
@@ -82,12 +83,17 @@
  }
  
  html, body {
-     width: 100%;
+    width: 100vw;
+    min-height: 100vh;
  }
  
  body {
      -webkit-text-size-adjust: none;
      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+ }
+ #app{
+    width: 100vw;
+    min-height: 100vh
  }
 
 </style>

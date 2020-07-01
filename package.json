@@ -13,9 +13,10 @@
     "postcss-px2rem": "^0.3.0",
     "sass-loader": "^8.0.2",
     "swiper": "^5.4.1",
+    "testlodash": "^0.0.4",
     "vue": "^3.0.0-beta.1",
     "vue-router": "^4.0.0-alpha.12",
-    "vuex": "^4.0.0-beta.2"
+    "vuex": "^4.0.0-beta.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "~4.3.0",

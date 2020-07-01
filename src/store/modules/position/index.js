@@ -1,5 +1,5 @@
-import actions from './actions';
-import mutations from './mutations';
+import * as actions from './actions';
+import * as mutations from './mutations';
 
 const state = {
   city:""

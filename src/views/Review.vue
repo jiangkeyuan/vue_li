@@ -4,11 +4,11 @@
   </div>
 </template>
 <script>
-import { getCurrentInstance} from "vue";
+import { useRoute } from 'vue-router'
 export default {
   setup(){
-    const { ctx } = getCurrentInstance();
-    console.log(ctx.$router)
+    const route = useRoute();
+    console.log(route)
   }
 }
 </script>
