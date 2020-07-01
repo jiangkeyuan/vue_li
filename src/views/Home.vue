@@ -16,54 +16,75 @@
         </div>
       </div>
     </div>
-    {{msg}}
-    <Button class="home-button" value="done" :click="handleClick"></Button>
+    <Button class="home-button" :value="data.val" :click="handleClick"></Button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { reactive, onMounted,computed } from "vue";
-import { useRouter } from 'vue-router'
+import { reactive, onMounted, computed, nextTick } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import HeaderImg from "@/components/headerImg.vue";
 import Card from "@/components/card.vue";
 import Button from "@/components/button.vue";
 import Inputs from "@/components/inputVb.vue";
 import useHeader from "@/hooks/useHeader.js";
+
+// test()
+//   .then(res => {
+//     a = 200;
+//     console.log(res);
+//   })
+//   .catch(error => {
+//     console.log(error, "报错");
+//   });
+
 export default {
   name: "Home",
   setup() {
     const store = useStore();
     const router = useRouter();
-    console.log(router);
-    let msg = computed(()=>store.state.home.messages.msg)
+    let msg = computed(() => store.state.home.messages.msg);
     let data = reactive({
       name: "",
+      val: 10,
       phoneNumber: ""
     });
-
+    let value = computed({
+      get: () => data.val * 2,
+      set: val => {
+        if (data.val % 2) {
+          data.val = val + 2;
+        } else {
+          data.val = val + 1;
+        }
+      }
+    });
+    value.value = 10;
     setTimeout(() => {
       data.name = useHeader("BILL").name;
       data.phoneNumber = useHeader("BILL").phoneNumber;
     }, 1000);
-
     onMounted(() => {
-      store.dispatch("home/getMessages",20)
+      store.dispatch("home/getMessages", 20);
     });
-
-    const handleClick = ()=>{
-      store.dispatch("home/getMessages",20);
+    nextTick(() => {
+      console.log(document);
+    });
+    const handleClick = () => {
+      store.dispatch("home/getMessages", 20);
       router.push({
-        path:"review",
-        params:{
-          id:msg
+        path: "review",
+        params: {
+          id: msg
         }
-      }) // -> /user/123
-    }
+      }); // -> /user/123
+    };
 
     return {
       data,
+      value,
       onMounted,
       msg,
       handleClick
@@ -80,7 +101,7 @@ export default {
 <style scoped>
 .main-home {
   padding: 36px 0 30px 0;
-  min-height: 603px;
+  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
